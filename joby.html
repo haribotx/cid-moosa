@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/gh/tanaikech/HtmlFormObjectParserForGoogleAppsScript_js@master/htmlFormObjectParserForGoogleAppsScript_js.min.js"></script>
+
+<form>
+  Text1: <input type="text" name="sampleText1" /><br />
+  Text2: <input type="text" name="sampleText2" /><br />
+  Number: <input type="number" name="sampleNumber" /><br />
+  Date: <input type="date" name="sampleDate" /><br />
+
+  File: <input type="file" name="sampleFiles" multiple /><br />
+
+  CheckBox: <input type="checkbox" name="sampleCheckbox" value="1" />1<br />
+  CheckBox: <input type="checkbox" name="sampleCheckbox" value="2" />2<br />
+
+  Radiobutton: <input type="radio" name="sampleRadiobutton" value="1" />1<br />
+  Radiobutton: <input type="radio" name="sampleRadiobutton" value="2" />2<br />
+
+  <input
+    type="submit"
+    name="button"
+    value="submit"
+    onclick="main(this);return false;"
+  />
+</form>
+
+<script>
+  async function main(e) {
+    const obj = await ParseFormObjectForGAS(e.parentNode);
+    google.script.run
+      .withFailureHandler((err) => console.log(err.message))
+      .withSuccessHandler((res) => console.log(res))
+      .getFormValues(obj);
+  }
+</script>
+  </body>
+</html>
+
+</body>
+</html>
